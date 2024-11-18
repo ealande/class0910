@@ -1,0 +1,20 @@
+<main [style]="'padding: 1em;'">
+  <h1>Meus sites favoritos</h1>
+
+  <p>Esta é a minha galeria de sites favoritos</p>
+
+<mat-grid-list [cols]="(umaColuna$ | async) ? 1 : (duasColunas$ | async) ? 2 : 3 " rowHeight="2:1" gutterSize="1em">
+  <mat-grid-tile
+  [style.backgroundColor]="'#00000010'"
+  [style.borderRadius]="'0.5em'">1</mat-grid-tile>
+  <mat-grid-tile
+  [style.backgroundColor]="'#00000010'"
+  [style.borderRadius]="'0.5em'">2</mat-grid-tile>
+  <mat-grid-tile
+  [style.backgroundColor]="'#00000010'"
+  [style.borderRadius]="'0.5em'">3</mat-grid-tile>
+  <mat-grid-tile
+  [style.backgroundColor]="'#00000010'"
+  [style.borderRadius]="'0.5em'">4</mat-grid-tile>
+</mat-grid-list>
+</main>
