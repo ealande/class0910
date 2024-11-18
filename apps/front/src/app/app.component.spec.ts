@@ -5,7 +5,6 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 describe('AppComponent', () => {
 
@@ -16,7 +15,6 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         AppComponent,
-        NxWelcomeComponent,
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
