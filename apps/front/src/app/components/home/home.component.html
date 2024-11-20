@@ -3,13 +3,29 @@
 
   <p>Esta é a minha galeria de sites favoritos</p>
 
-<mat-grid-list [cols]="(umaColuna$ | async) ? 1 : (duasColunas$ | async) ? 2 : 3 " rowHeight="2:1" gutterSize="1em">
-
+    <div class="container">
   @for(favorito of favoritos$ | async; track favorito ) {
- <mat-grid-tile
-  [style.backgroundColor]="'#00000010'"
-  [style.borderRadius]="'0.5em'">{{ favorito.titulo }} </mat-grid-tile>
-  }
-</mat-grid-list>
 
+    <mat-card class="card-favorito">
+      <mat-card-header>
+        <mat-card-title>{{favorito.titulo}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="favorito.imagem" alt="Capa do Favorito">
+      <mat-card-content>
+        <p>
+            {{ favorito.descricao }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-stroked-button [href]="favorito.url" target="_blank" color="accent">
+          <mat-icon>open_in_new</mat-icon>
+          Visitar
+        </a>
+        <button mat-stroked-button>
+          <mat-icon>edito_note</mat-icon>
+          Editar
+        </button>
+      </mat-card-actions>
+    </mat-card> }
+</div>
  </main>
