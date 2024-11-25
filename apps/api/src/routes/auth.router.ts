@@ -16,13 +16,18 @@ authRouter.post('/login', async (req: Request, res: Response, next: NextFunction
   ).findOne(body);
 
   if(usuario) {
+
     const iUsuarioLogado: iUsuarioLogado = {
-      usuario: usuario
+      usuario: usuario,
     }
     res.json(iUsuarioLogado);
+
   } else {
+
     res.status(401);
+
     return next(new Error('Login e/ou senha errados'))
+
   }
 
 })

@@ -7,7 +7,7 @@ const routes: Routes = [
     title: 'Login',
     path: 'auth',
     component: AuthComponent,
-  }
+  },
 ];
 
 @NgModule({

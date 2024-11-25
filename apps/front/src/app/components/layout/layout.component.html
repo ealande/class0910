@@ -25,16 +25,28 @@
       <span>Meus Favoritos</span>
 
       <span class="example-spacer"></span>
+
         <button
           type="button"
-          mat-fab extended
+          mat-fab
           aria-label="Editar o Favorito"
-          routerLink="/favorito-edicao"
-          routerLinkActive="hidden">
+         routerLink="/favorito-edicao"
+         routerLinkActive="hidden"
+         >
 
           <mat-icon>bookmark_add</mat-icon>
           Novo
         </button>
+
+        <button
+        type="button"
+        mat-button
+        aria-label="Fazer Login na Aplicação"
+        routerLink="/auth"
+        routerLinkActive="hidden">
+        <mat-icon>login</mat-icon>
+        Fazer Login
+      </button>
     </mat-toolbar>
     <!-- Add Content Here -->
 

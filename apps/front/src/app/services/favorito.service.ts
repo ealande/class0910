@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject} from '@angular/core';
-import { API_BASE } from '../app.config';
 import { Observable, shareReplay } from 'rxjs';
 import { IFavorito } from '@nx-monorepo/comum';
+import { API_BASE } from '@nx-monorepo/auth';
 
 @Injectable({
   providedIn: 'root'
