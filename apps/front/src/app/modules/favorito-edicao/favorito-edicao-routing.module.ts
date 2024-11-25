@@ -1,7 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormFavoritoComponent } from '../favoritoedicao/components/form-favorito/form-favorito.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+   {
+    path: '',
+    pathMatch: 'full',
+    component: FormFavoritoComponent,
+    data: {
+      id: '',
+    }
+   },
+   {
+    path: ':id',
+    component: FormFavoritoComponent,
+   }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

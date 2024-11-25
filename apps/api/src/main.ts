@@ -8,6 +8,8 @@ import * as path from 'path';
 import cors from 'cors';
 import { MongoClient } from 'mongodb';
 import { favoritoRouter } from './routes/favorito.router';
+import { json } from 'body-parser';
+import { authRouter } from './routes/auth.router';
 
 MongoClient.connect('mongodb://node-mongodb-container_devcontainer-db-1/',).then((client: MongoClient) => {
   app.locals.db = client.db('app-favoritos');
@@ -20,7 +22,11 @@ const app = express();
 
 app.use(cors());
 
+app.use(json());
+
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+app.use('/api/auth', authRouter);
 
 app.use('/api/favorito', favoritoRouter);
 
