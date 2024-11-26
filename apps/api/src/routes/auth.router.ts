@@ -1,6 +1,8 @@
 import { IUsuario, IUsuarioESenha, iUsuarioLogado } from "@nx-monorepo/comum";
 import { NextFunction, Request, Response, Router } from "express";
 import { getCollection } from "../util/get-collection";
+import { sanitizarUsuario } from "../util/sanitizacao";
+import { criarToken } from "../util/jwt";
 
 
 export const authRouter = Router();
@@ -18,7 +20,8 @@ authRouter.post('/login', async (req: Request, res: Response, next: NextFunction
   if(usuario) {
 
     const iUsuarioLogado: iUsuarioLogado = {
-      usuario: usuario,
+      jwt: criarToken(usuario),
+      usuario: sanitizarUsuario(usuario),
     }
     res.json(iUsuarioLogado);
 

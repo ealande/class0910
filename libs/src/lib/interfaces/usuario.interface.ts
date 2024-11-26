@@ -1,3 +1,5 @@
+import { JwtPayload } from 'jsonwebtoken'
+
 export interface IUsuario {
   _id: number;
 
@@ -13,7 +15,12 @@ export interface IUsuario {
 
 export type IUsuarioESenha = Pick<IUsuario, 'login' | 'senha'>;
 
-export type iUsuarioLogado = {
+export type IUsuarioSemSenha = Omit<IUsuario, 'senha'>;
 
-  usuario: IUsuario;
+export type IUsuarioJwt = IUsuarioSemSenha & JwtPayload;
+
+export type iUsuarioLogado = {
+  jwt: string;
+
+  usuario: IUsuarioSemSenha;
 }
