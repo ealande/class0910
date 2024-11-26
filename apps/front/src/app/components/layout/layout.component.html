@@ -1,18 +1,19 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false"
-      [autoFocus]="false">
+      [attr.role]="(isXSmall$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isXSmall$ | async) ? 'push' : 'side'"
+      [opened]="(isXSmall$ | async) === false"
+      [autoFocus]="false"
+  >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="home" routerLinkActive="active-link" >Home</a>
-      <a mat-list-item routerLink="sobre" routerLinkActive="active-link" >Sobre</a>
+      <a mat-list-item routerLink="/home" routerLinkActive="active">Home</a>
+      <a mat-list-item routerLink="/sobre" routerLinkActive="active">Sobre</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      @if (isHandset$ | async) {
+      @if (isXSmall$ | async) {
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -21,35 +22,46 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
+      <span>Meus favoritos</span>
 
-      <span>Meus Favoritos</span>
+      <!-- Segundo https://v17.material.angular.io/components/toolbar/overview -->
+      <span class="spacer"></span>
 
-      <span class="example-spacer"></span>
+      <button
+        type="button"
+        mat-fab
+        extended
+        aria-label="Editar o favorito"
+        routerLink="/favorito-edicao"
+        routerLinkActive="hidden"
+      >
+        <mat-icon>bookmark_add</mat-icon>
+        Novo
+      </button>
 
+      @if ((authService.logado$ | async) === false) {
         <button
           type="button"
-          mat-fab
-          aria-label="Editar o Favorito"
-         routerLink="/favorito-edicao"
-         routerLinkActive="hidden"
-         >
-
-          <mat-icon>bookmark_add</mat-icon>
-          Novo
+          mat-button
+          aria-label="Fazer login na aplicação"
+          routerLink="/auth"
+          routerLinkActive="hidden"
+        >
+          <mat-icon>login</mat-icon>
+          Fazer login
         </button>
-
+      } @else {
         <button
-        type="button"
-        mat-button
-        aria-label="Fazer Login na Aplicação"
-        routerLink="/auth"
-        routerLinkActive="hidden">
-        <mat-icon>login</mat-icon>
-        Fazer Login
-      </button>
+          mat-flat-button
+          color="warn"
+          (click)="authService.logout()"
+        >
+          <mat-icon>logout</mat-icon>
+          Fazer logout
+        </button>
+      }
     </mat-toolbar>
     <!-- Add Content Here -->
-
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

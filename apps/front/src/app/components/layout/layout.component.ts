@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { AuthService } from '@nx-monorepo/auth';
 
 @Component({
   selector: 'app-layout',
@@ -16,21 +17,25 @@ import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angul
   styleUrl: './layout.component.css',
   standalone: true,
   imports: [
+    RouterOutlet,
+    RouterModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     AsyncPipe,
-    RouterModule,
   ]
 })
 export class LayoutComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-}
+  public authService = inject(AuthService);
+
+  isXSmall$: Observable<boolean> = this.breakpointObserver.observe(
+    Breakpoints.XSmall,
+  ).pipe(
+    map(result => result.matches),
+    shareReplay(),
+  );
+  }
