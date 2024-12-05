@@ -24,7 +24,7 @@
           "apps/front/src/assets"
         ],
         "styles": [
-          "@angular/material/prebuilt-themes/purple-green.css",
+          "@angular/material/prebuilt-themes/pink-bluegrey.css",
           "apps/front/src/styles.css"
         ],
         "scripts": []
