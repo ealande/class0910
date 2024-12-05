@@ -6,11 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { HighUtfprDirectiveDirective } from '../../directives/highUtfprDirective.directive';
+import { SplitTextPipe } from '../../pipes/splitText.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatCardModule,MatIconModule,RouterModule, HighUtfprDirectiveDirective],
+  imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, RouterModule, HighUtfprDirectiveDirective, SplitTextPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

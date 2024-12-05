@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { AuthService } from '@nx-monorepo/auth';
+import { SplitTextPipe } from '../../pipes/splitText.pipe';
 
 @Component({
   selector: 'app-layout',
@@ -25,6 +26,7 @@ import { AuthService } from '@nx-monorepo/auth';
     MatListModule,
     MatIconModule,
     AsyncPipe,
+    SplitTextPipe,
   ]
 })
 export class LayoutComponent {
